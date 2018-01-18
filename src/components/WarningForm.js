@@ -14,8 +14,13 @@ class WarningForm extends React.Component {
   }
 
   handleSubmit(event) {
-    if (this.state.value !== 'choose') {
-      alert("Live missile warning sent!");
+    switch (this.state.value) {
+      case 'live':
+        alert('Live missile warning sent!');
+        break;
+      case 'test':
+        alert('Test alert. Carry on, nothing to see here.');
+        break;
     }
     event.preventDefault();
   }
