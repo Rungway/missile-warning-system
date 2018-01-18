@@ -7,3 +7,11 @@ Sadly, this system isn't quite up-to-scratch. We've had a few instances where ou
 - Adjust the UX for triggering the warning so as to reduce the tendancy for errors
 - Add a feed of missile-related tweets to the application
 - Send the missile warning to Twitter
+
+## Installation
+
+Just do `npm install` mate.
+
+## Running
+
+Run `npm start` from your command line to launch the development build.
