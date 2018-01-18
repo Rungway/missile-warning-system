@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { Col, Grid, Row, PageHeader } from 'react-bootstrap';
 
+import WarningForm from './WarningForm';
+
 class App extends Component {
   render() {
     return (
@@ -10,6 +12,7 @@ class App extends Component {
         <Grid>
           <Row>
             <Col xs={12}>
+              <WarningForm />
             </Col>
           </Row>
         </Grid>
