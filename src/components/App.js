@@ -8,7 +8,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <PageHeader>Rungway Missile Warning System</PageHeader>
+        <PageHeader
+          bsClass="text-center"
+        >
+          Rungway Missile Warning System
+        </PageHeader>
         <Grid>
           <Row>
             <Col xs={12}>
