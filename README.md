@@ -12,6 +12,10 @@ Sadly, this system isn't quite up-to-scratch. We've had a few instances where ou
 
 Just do `npm install` mate.
 
-## Running
+## Running the server
 
-Run `npm start` from your command line to launch the development build.
+Run `PORT=3002 node ./bin/start` to launch the Express server.
+
+## Running the client
+
+From the client folder, run `npm start` to launch the react app's dev server.
