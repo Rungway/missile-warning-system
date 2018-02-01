@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import { Col, Grid, Row, PageHeader } from 'react-bootstrap'
+import { Col, Grid, Row, PageHeader } from 'react-bootstrap';
 
-import WarningForm from './WarningForm'
+import WarningForm from './WarningForm';
 
 class App extends Component {
-  render () {
+  render() {
     return (
-      <div className='App'>
+      <div className="App">
         <PageHeader
-          bsClass='text-center'
+          bsClass="text-center"
         >
           Rungway Missile Warning System
         </PageHeader>
@@ -21,8 +21,8 @@ class App extends Component {
           </Row>
         </Grid>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
