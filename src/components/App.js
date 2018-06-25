@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Col, Grid, Row, PageHeader } from 'react-bootstrap';
 
 import WarningForm from './WarningForm';
+import LiveWarningConfirm from './LiveWarningConfirm';
 
 class App extends Component {
   render() {
@@ -20,6 +21,8 @@ class App extends Component {
             </Col>
           </Row>
         </Grid>
+
+        <LiveWarningConfirm />
       </div>
     );
   }
