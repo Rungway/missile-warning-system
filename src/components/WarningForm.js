@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Form, FormControl, FormGroup, Glyphicon } from 'react-bootstrap';
+import { Button, Form, FormControl, FormGroup, Glyphicon, Col } from 'react-bootstrap';
 
 
 class WarningForm extends React.Component {
@@ -43,13 +43,15 @@ class WarningForm extends React.Component {
             <option value="live">Live Missile Warning</option>
           </FormControl>
         </FormGroup>
-        <Button
-          type="submit"
-          bsStyle="success"
-          bsSize="large"
-        >
-          Go <Glyphicon glyph="send" />
-        </Button>
+        <Col className='text-center'>
+          <Button
+            type="submit"
+            bsStyle="success"
+            bsSize="large"
+          >
+            Go <Glyphicon glyph="send" />
+          </Button>
+        </Col>
       </Form>
     );
   }
