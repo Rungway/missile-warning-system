@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 import './styles/LiveWarningConfirm.css';
 
@@ -6,6 +7,11 @@ class LiveWarningConfirm extends React.Component {
     state = {
       countdown:5,
       timer: null,
+    };
+
+    static propTypes = {
+      onConfirmLiveWarning: PropTypes.func.isRequired,
+      onAbortWarning: PropTypes.func.isRequired,
     };
 
     componentDidMount = () => {
@@ -22,25 +28,25 @@ class LiveWarningConfirm extends React.Component {
       
       if (this.state.countdown === 0){
         clearInterval(this.state.timer);
-        
-        this.sendLiveMissileAlert();
+        setTimeout(this.confirmLiveMissileAlert, 1400);
       }
     }
 
-    sendLiveMissileAlert = () => {
-      //...
+    confirmLiveMissileAlert = () => {
+      this.props.onConfirmLiveWarning();
     }
 
     getCountDownStyle = () => {
       let res = 'countdown '
       if (this.state.countdown < 3) res += 'countdown-danger ';
-      if (this.state.countdown === 0) res += 'countdown-over';
+      if (this.state.countdown === 0) res += 'countdown-over ';
       return res; 
     } 
 
     render() {
       const { countdown } = this.state;
       const countDownStyle = this.getCountDownStyle();
+      const optionsStyle = countdown === 0 ? 'fadeOut' : '';
 
       return (
         <div className="backdrop">
@@ -50,36 +56,34 @@ class LiveWarningConfirm extends React.Component {
                   <Col xs={12} className='text-center'>
                     <h2>Live Missile Warning to be sent in...</h2>
                   </Col>
-                </Row>
-
-                <Row>
+     
                   <Col xs={12} className='text-center'>
                     <h1 className={countDownStyle}>
                       {countdown}
                     </h1>
                   </Col>
+        
+                  {/* Give options for confirming or aborting while countdown */}
+                  <div className={optionsStyle}>
+                      <Col xs={12} className='text-center'>
+                        <button 
+                          disabled={countdown === 0}
+                          onClick={this.confirmLiveMissileAlert}
+                          >
+                            Send Now
+                        </button>
+                      </Col>
+              
+                      <Col xs={12} className='text-center'>
+                        <button 
+                          disabled={countdown === 0}
+                          onClick={this.props.onAbortWarning}
+                          >
+                            Abort
+                        </button>
+                      </Col>
+                  </div>
                 </Row>
-
-                {/* Give options for confirming or aborting while countdown */}
-                {countdown !== 0 &&
-                  <Fragment>
-                    <Row>
-                      <Col xs={12} className='text-center'>
-                        <button>
-                          Send Now
-                        </button>
-                      </Col>
-                    </Row>
-
-                    <Row>
-                      <Col xs={12} className='text-center'>
-                        <button>
-                          Abort
-                        </button>
-                      </Col>
-                    </Row>
-                  </Fragment>
-                }
               </Grid>
           </div>
         </div>

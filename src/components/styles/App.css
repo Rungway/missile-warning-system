@@ -1,0 +1,8 @@
+.warning-list{
+  /* max-width: 600px; */
+  height: 400px;
+  overflow-y: auto;
+  border: 1px #cccccc solid;
+  margin-top: 30px;
+  box-shadow: 2px 2px 15px #dbdada inset;
+}

@@ -4,7 +4,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.302);
     padding: 50px;
   }
 
@@ -12,13 +12,14 @@
     display: flex;
     background-color: #ffffff;
     border-radius: 5px;
-    width: 600px;
-    height: 400px;
+    max-width: 600px;
+    max-height:500px;
+    height: 300px;
     margin: 0 auto;
     padding: 20px;
   }
 
-  .countdown{
+  .countdown {
     font-size: 100px;
     color: black;
   }
@@ -28,11 +29,21 @@
   }
 
   .countdown-over{
-    animation: move 1s linear;
-    -webkit-animation: move 750ms linear;
+    animation: move 350ms linear;
+    -webkit-animation: move 350ms linear;
+    -webkit-animation-fill-mode: forwards;
+  }
+
+  .fadeOut {
+    animation: fadeOut 260ms linear;
+    -webkit-animation: fadeOut 260ms linear;
     -webkit-animation-fill-mode: forwards;
   }
 
   @keyframes move {
-    to { transform : translateY(40px) }
+    to { transform : translateY(20px) }
+  }
+
+  @keyframes fadeOut {
+    to { opacity: 0;}
   }
