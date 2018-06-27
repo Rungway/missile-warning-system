@@ -1,0 +1,69 @@
+.missile-alert{
+  display: flex;
+  justify-content: space-between;
+  font-size: 23px;
+  padding: 20px;
+}
+
+.missile-alert span {
+  display: flex;
+  width: 96%;
+  line-height: 25px;
+}
+
+.missile-alert span > :first-child {
+  margin-right: 15px; 
+  margin-top:-2px;
+}
+
+#message{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+}
+
+.close-btn {
+  cursor: pointer;
+  transition: color .2s ease-in;
+}
+
+/* Alert types */
+.live-alert{
+  background-color: #fcd9d9;
+  border: 0.5px solid #ff8b8b;
+}
+
+.live-alert .close-btn{
+  color: #fc9999;
+}
+
+.live-alert .close-btn:hover{
+  color: #e03434;
+}
+
+.test-alert{
+  background-color: #fafaa4; 
+  border:0.5px solid #e0e00c
+}
+
+.test-alert .close-btn{
+  color:#d3d312;
+}
+
+.test-alert .close-btn:hover{
+  color: #96960e;
+}
+
+.promo-alert{
+  background-color: #dbeff8;
+  border: 0.5px solid #96dbfc;
+}
+
+.promo-alert .close-btn{
+  color: #96dbfc;
+}
+
+.promo-alert .close-btn:hover{
+  color: #1c98d1;
+}

@@ -1,0 +1,58 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.302);
+    padding: 50px;
+  }
+
+ .confirm-panel {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 5px;
+    max-width: 600px;
+    max-height:500px;
+    height: 450px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .countdown {
+    font-size: 100px;
+    color: black;
+  }
+
+  .countdown-danger{
+    color: red;
+  }
+
+  .countdown-over{
+    animation: move 350ms linear;
+    -webkit-animation: move 350ms linear;
+    -webkit-animation-fill-mode: forwards;
+  }
+
+  .fadeOut {
+    animation: fadeOut 260ms linear;
+    -webkit-animation: fadeOut 260ms linear;
+    -webkit-animation-fill-mode: forwards;
+  }
+
+  @keyframes move {
+    to { transform : translateY(70px) }
+  }
+
+  @keyframes fadeOut {
+    to { opacity: 0;}
+  }
+
+  #abort-btn{
+    width: 100px;
+    height: 100px;
+  }
+
+  #send-btn{
+    margin-top: 40px;
+  }
