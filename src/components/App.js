@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Col, Grid, PageHeader, Row } from 'react-bootstrap';
-import LiveWarningConfirm from './LiveWarningConfirm';
-import './styles/App.css';
-import WarningForm from './WarningForm';
 import Alert from '../components/Alert';
+import LiveWarningConfirm from './LiveWarningConfirm';
+import WarningForm from './WarningForm';
+import './styles/App.css';
 
 class App extends Component {
   state = {
@@ -16,7 +16,7 @@ class App extends Component {
       // present user with a Warning Confirmation dialog
       this.setState({pendingLiveWarning: warning});
     }
-    else{
+    else {
       this.addWarning(warning);
     }
   }
@@ -25,6 +25,8 @@ class App extends Component {
     const alerts = this.state.alerts;
     alerts.unshift(warning);
     this.setState({alerts})
+
+    this.refs.warningList.scrollTop = 0;
   }
 
   onConfirmLiveWarning = () => {
@@ -39,6 +41,7 @@ class App extends Component {
   onDismissAlert = (id) => {
     // Find alert by their id and remove from list 
     const alerts = this.state.alerts;
+    
     const index = alerts.findIndex((item) => item.id === id);
     alerts.splice(index, 1);
 
@@ -65,8 +68,10 @@ class App extends Component {
           {/* List of recent open warnings */}
           <Row>
             <Col xs={10} xsPush={1}>
-              <div className='warning-list'>
-                { alerts.map( (alert)=> {
+              <div
+                className='warning-list'
+                ref='warningList'>
+                { alerts.map((alert) => {
                   return <Alert alert={alert} onClose={this.onDismissAlert} key={alert.id}/>
                 })}
               </div>

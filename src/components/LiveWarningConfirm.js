@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
+import { Button, Col, Grid, Row, Glyphicon } from 'react-bootstrap';
 import './styles/LiveWarningConfirm.css';
 
 class LiveWarningConfirm extends React.Component {  
     state = {
-      countdown:5,
+      countdown:4,
       timer: null,
     };
 
@@ -28,7 +28,7 @@ class LiveWarningConfirm extends React.Component {
       
       if (this.state.countdown === 0){
         clearInterval(this.state.timer);
-        setTimeout(this.confirmLiveMissileAlert, 1400);
+        setTimeout(this.confirmLiveMissileAlert, 1350);
       }
     }
 
@@ -65,23 +65,29 @@ class LiveWarningConfirm extends React.Component {
         
                   {/* Give options for confirming or aborting while countdown */}
                   <div className={optionsStyle}>
-                      <Col xs={12} className='text-center'>
-                        <button 
-                          disabled={countdown === 0}
-                          onClick={this.confirmLiveMissileAlert}
-                          >
-                            Send Now
-                        </button>
-                      </Col>
-              
-                      <Col xs={12} className='text-center'>
-                        <button 
-                          disabled={countdown === 0}
-                          onClick={this.props.onAbortWarning}
-                          >
-                            Abort
-                        </button>
-                      </Col>
+                    <Col xs={12} className='text-center'>
+                      <Button 
+                        id='abort-btn'
+                        bsStyle='danger'
+                        bsSize='large'
+                        disabled={countdown === 0}
+                        onClick={this.props.onAbortWarning}
+                        >
+                          Abort  <Glyphicon glyph='remove-circle'/>
+                      </Button>
+                    </Col>
+                
+                    <Col xs={12} className='text-center'>
+                      <Button
+                        id='send-btn'
+                        bsStyle='success'
+                        bsSize='large'
+                        disabled={countdown === 0}
+                        onClick={this.confirmLiveMissileAlert}
+                        >
+                        Send Now <Glyphicon glyph='fire'/>
+                      </Button>
+                    </Col>
                   </div>
                 </Row>
               </Grid>

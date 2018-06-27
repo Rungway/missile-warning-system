@@ -13,12 +13,14 @@ const Alert = (props) => {
   }
 
   return (  
-    <div className={'missile-alert '+alertStyle.style} >
+    <div className={'missile-alert ' + alertStyle.style} >
+      {/* Icon and message */}
       <span>
         <i className={alertStyle.icon}/>
         <span id='message'>{alert.message}</span>
       </span>
       
+      {/* Close btn */}
       <i className="fas fa-times fa-xs close-btn"
          title='Dismiss alert'
          onClick={() => props.onClose(alert.id)}/>

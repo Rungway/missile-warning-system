@@ -19,7 +19,7 @@ class WarningForm extends React.Component {
   handleChange(event) {
     this.setState({value: event.target.value}, ()=>{
       // For live and custom alerts skip the need to click Go button
-      // as they present user prompts
+      // as these options present user prompts
       if (this.state.value==='live' || this.state.value==='custom'){
         this.createNewWarning();
       }
@@ -42,7 +42,7 @@ class WarningForm extends React.Component {
         warning.message = 'Flash Sale! 75% off Nutella. Yum!';
         break;
       case 'hoodie':
-        warning.message = 'New Rungway hoodie released!';
+        warning.message = 'New season Rungway hoodie released!';
         break;
       case 'custom':
         warning.message = prompt('Inform the lucky Rungway residents of...');
@@ -69,7 +69,7 @@ class WarningForm extends React.Component {
             <option value="live">Live Missile Warning</option>
             <option value="nutella">Nutella Sale</option>
             <option value="hoodie">New Rungway Hoodie</option>
-            <option value="custom">Custom promotion...</option>
+            <option value="custom">Custom Promotion...</option>
           </FormControl>
         </FormGroup>
         <Col className='text-center'>

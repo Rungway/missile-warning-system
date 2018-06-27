@@ -14,7 +14,7 @@
     border-radius: 5px;
     max-width: 600px;
     max-height:500px;
-    height: 300px;
+    height: 450px;
     margin: 0 auto;
     padding: 20px;
   }
@@ -41,9 +41,18 @@
   }
 
   @keyframes move {
-    to { transform : translateY(20px) }
+    to { transform : translateY(70px) }
   }
 
   @keyframes fadeOut {
     to { opacity: 0;}
+  }
+
+  #abort-btn{
+    width: 100px;
+    height: 100px;
+  }
+
+  #send-btn{
+    margin-top: 40px;
   }
