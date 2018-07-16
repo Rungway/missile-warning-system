@@ -9,9 +9,10 @@ class WarningForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {value: 'choose'};
+    this.state = {value: ''};
+    this.error = false;
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleOptionChange = this.handleOptionChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -23,25 +24,64 @@ class WarningForm extends React.Component {
       case 'test':
         alert('Test alert. Carry on, nothing to see here.');
         break;
+      default:
+        this.defaultError();
     }
     event.preventDefault();
   }
 
-  handleChange(event) {
+  handleOptionChange(event) {
     this.setState({value: event.target.value});
+    this.setState({error: false});
+  }
+
+  defaultError() {
+    this.setState({error: true});
   }
 
   render() {
     return (
       <Form onSubmit={this.handleSubmit} className="missile-radios">
         <FormGroup>
-          <FormControl type="radio" placeholder="Jane Doe" id="test" name="missileOptions" />
-          <ControlLabel htmlFor="test" className="label-test"><span className="big">Test</span><span>Missile Warning</span></ControlLabel>
+          <FormControl 
+            type="radio"
+            id="test" 
+            name="missileOptions"
+            onChange={this.handleOptionChange}
+            value="test" />
+          <ControlLabel 
+            htmlFor="test" 
+            className="label-test">
+            <span className="big">Test</span>
+            <span>Missile Warning</span>
+          </ControlLabel>
         </FormGroup>
         <FormGroup>
-          <FormControl type="radio" placeholder="Jane Doe" id="live" name="missileOptions" />
-          <ControlLabel htmlFor="live" className="label-live"><span className="big">Live</span><span>Missile Warning</span></ControlLabel>
+          <FormControl 
+            type="radio" 
+            id="live" 
+            name="missileOptions"
+            onChange={this.handleOptionChange}
+            value="live" />
+          <ControlLabel 
+            htmlFor="live" 
+            className="label-live">
+            <span className="big">Live</span>
+            <span>Missile Warning</span>
+          </ControlLabel>
         </FormGroup>
+        {
+          this.state.value === 'live' &&
+          <p className="submit-warning warn" role="alert">
+          Warning: You have selected a <b>LIVE</b> missile warning. Please make sure you're sure!
+          </p>
+        }
+        {
+          this.state.value === '' && this.state.error === true &&
+          <p className="default-error warn" role="alert">
+            <Glyphicon glyph="warning-sign" aria-hidden="true" />Hi! I think you forgot something. Please pick whether to start a test or live missile warning session.
+          </p>
+        }
         <div className="submit-wrapper">
           <Button
             type="submit"
