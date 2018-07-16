@@ -1,0 +1,108 @@
+.missile-radios {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  margin-top: 60px;
+}
+
+.missile-radios .form-group {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.missile-radios span {
+  display: block;
+  position: relative;
+  font-size: 2rem;
+  font-weight: 400;
+  z-index: 2;
+}
+
+.missile-radios .big {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.missile-radios input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.missile-radios label {
+  padding: 10vw;
+  border-radius: 20px; 
+  box-shadow: 8px 16px 20px 0 rgba(0,0,0,0.22);
+  margin: 0;
+  transition: background-color 0.2s ease;
+}
+
+.missile-radios .label:hover,
+.missile-radios .label:focus {
+  cursor: pointer;
+}
+
+.missile-radios .label-test {
+  background-color: rgba(243, 154, 39, 0.15);
+  border: 1px solid rgba(243, 154, 39, 0.25);
+}
+
+.missile-radios .label-test:hover,
+.missile-radios input[type="radio"]:focus + .label-test {
+  background-color: rgba(243, 154, 39, 0.35);
+}
+
+.missile-radios .label-live {
+  background-color: rgba(247, 45, 15, 0.15);
+  border: 1px solid rgba(247, 45, 15, 0.25);
+}
+
+.missile-radios .label-live:hover,
+.missile-radios input[type="radio"]:focus + .label-live {
+  background-color: rgba(247, 45, 15, 0.35);
+}
+
+.missile-radios input[type="radio"]:checked + .label-test {
+  background-color: rgba(243, 154, 39, 0.85);
+}
+
+.missile-radios input[type="radio"]:checked + .label-live {
+  background-color: rgba(247, 45, 15, 0.85);
+}
+
+.missile-radios label:after {
+  visibility: hidden;
+  margin-top: 15px;
+  content: "";
+  display: inline-block;
+  height: 15px;
+  width: 35px;
+  border-left: 4px solid;
+  border-bottom: 4px solid;
+  
+  transform: rotate(-45deg);
+}
+
+.missile-radios input[type="radio"]:checked + label::after {
+  visibility: visible;
+}
+
+.missile-radios .submit-wrapper {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.missile-radios .btn-lg {
+  width: 25vw;
+  margin: 60px auto 0;
+  font-size: 3rem;
+}
+
+.missile-radios .btn-lg span {
+  display: inline;
+}

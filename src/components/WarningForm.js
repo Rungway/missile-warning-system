@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Button, Form, FormControl, FormGroup, Glyphicon } from 'react-bootstrap';
+import { Button, Form, FormControl, ControlLabel, FormGroup, Glyphicon } from 'react-bootstrap';
+
+import './WarningForm.css';
 
 
 class WarningForm extends React.Component {
@@ -31,25 +33,24 @@ class WarningForm extends React.Component {
 
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <FormGroup bsSize="large">
-          <FormControl
-            componentClass="select"
-            onChange={this.handleChange}
-            value={this.state.value}
-          >
-            <option value="choose">Choose a warning...</option>
-            <option value="test">Test Missile Warning</option>
-            <option value="live">Live Missile Warning</option>
-          </FormControl>
+      <Form onSubmit={this.handleSubmit} className="missile-radios">
+        <FormGroup>
+          <FormControl type="radio" placeholder="Jane Doe" id="test" name="missileOptions" />
+          <ControlLabel htmlFor="test" className="label-test"><span className="big">Test</span><span>Missile Warning</span></ControlLabel>
         </FormGroup>
-        <Button
-          type="submit"
-          bsStyle="success"
-          bsSize="large"
-        >
-          Go <Glyphicon glyph="send" />
-        </Button>
+        <FormGroup>
+          <FormControl type="radio" placeholder="Jane Doe" id="live" name="missileOptions" />
+          <ControlLabel htmlFor="live" className="label-live"><span className="big">Live</span><span>Missile Warning</span></ControlLabel>
+        </FormGroup>
+        <div className="submit-wrapper">
+          <Button
+            type="submit"
+            bsStyle="success"
+            bsSize="large"
+          >
+            Go <Glyphicon glyph="send" aria-hidden="true" />
+          </Button>
+        </div>
       </Form>
     );
   }
