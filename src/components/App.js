@@ -8,18 +8,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <PageHeader
-          bsClass="text-center"
-        >
-          Rungway Missile Warning System
-        </PageHeader>
-        <Grid>
-          <Row>
-            <Col xs={12}>
-              <WarningForm />
-            </Col>
-          </Row>
-        </Grid>
+        <header role="banner">
+          <PageHeader
+            bsClass="text-center"
+          >
+            Rungway Missile Warning System
+          </PageHeader>
+        </header>
+        <main role="main">
+          <Grid>
+            <Row>
+              <Col xs={12}>
+                <WarningForm />
+              </Col>
+            </Row>
+          </Grid>
+        </main>
       </div>
     );
   }
