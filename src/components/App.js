@@ -13,6 +13,7 @@ class App extends Component {
       data: [
         {
           type: "Missile",
+          emoji: "⚠️",
           value: '',
           error: false,
           stage: 1,
@@ -23,6 +24,7 @@ class App extends Component {
         },
         {
           type: "Nutella Sales",
+          emoji: "🍞🌰",
           value: '',
           error: false,
           stage: 1,
@@ -33,6 +35,7 @@ class App extends Component {
         },
         {
           type: "Unicorn Sightings",
+          emoji: "🦄",
           value: '',
           error: false,
           stage: 1,
@@ -133,6 +136,7 @@ class App extends Component {
     const data = this.state.data;
     data[index] = {
       type: data[index].type,
+      emoji: data[index].emoji,
       value: '',
       error: false,
       stage: 1,

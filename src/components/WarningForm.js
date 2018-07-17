@@ -50,7 +50,7 @@ class WarningForm extends React.Component {
 
     return (
       <div className="warning-workflow">
-        <h2>{data.type}</h2>
+        <h2>{data.type} {data.emoji}</h2>
         {
           (data.active.live || data.active.test) &&
           <Well bsSize="large" className={checkActive().toLowerCase()}>
@@ -80,6 +80,7 @@ class WarningForm extends React.Component {
                 className="label-test">
                 <span className="big">Test</span>
                 <span>{data.type} Alert</span>
+                <span>{data.emoji}</span>
               </ControlLabel>
             </FormGroup>
             <FormGroup>
@@ -95,6 +96,7 @@ class WarningForm extends React.Component {
                 className="label-live">
                 <span className="big">Live</span>
                 <span>{data.type} Alert</span>
+                <span>{data.emoji}</span>
               </ControlLabel>
             </FormGroup>
             {
