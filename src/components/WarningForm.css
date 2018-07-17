@@ -20,6 +20,7 @@
   .warning-radios {
     justify-content: center;
   }
+
   .warning-radios label {
     margin: 0 20px;
   }
@@ -29,8 +30,21 @@
   position: relative;
   display: inline-block;
   text-align: center;
-  width: 50%;
+  width: 90%;
+  max-width: 400px;
   padding: 10px;
+}
+
+@media screen and (min-width: 440px) {
+  .warning-radios .form-group {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .warning-radios .form-group {
+    width: 50%;
+  }
 }
 
 .warning-radios span {
@@ -60,6 +74,12 @@
   border-radius: 20px; 
   box-shadow: 8px 16px 20px 0 rgba(0,0,0,0.22);
   transition: background-color 0.2s ease;
+}
+
+@media screen and (min-width: 1024px) {
+  .warning-radios label {
+    padding: 100px 0;
+  }
 }
 
 .warning-radios .label:hover,
