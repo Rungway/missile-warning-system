@@ -60,7 +60,7 @@ class WarningForm extends React.Component {
               bsStyle="primary"
               bsSize="large"
               onClick={reset}>
-              Click here to cancel the {checkActive()} sequence.
+              Click here to cancel the {data.type} {checkActive()} sequence.
             </Button>
           </Well>
         }
