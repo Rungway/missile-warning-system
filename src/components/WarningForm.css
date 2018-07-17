@@ -1,24 +1,39 @@
-.missile-radios {
+.warning-workflow {
+  border-bottom: 5px solid lightgray;
+  padding-bottom: 30px;
+}
+
+.warning-workflow h2 {
+  text-align: center;
+  margin: 40px auto 20px;
+}
+
+.warning-radios {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 @media screen and (min-width: 1020px) {
-  .missile-radios {
+  .warning-radios {
     justify-content: center;
+  }
+  .warning-radios label {
+    margin: 0 20px;
   }
 }
 
-.missile-radios .form-group {
+.warning-radios .form-group {
   position: relative;
   display: inline-block;
   text-align: center;
+  width: 50%;
+  padding: 10px;
 }
 
-.missile-radios span {
+.warning-radios span {
   display: block;
   position: relative;
   font-size: 2rem;
@@ -26,61 +41,61 @@
   z-index: 2;
 }
 
-.missile-radios .big {
+.warning-radios .big {
   font-size: 2.6rem;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
-.missile-radios input[type="radio"] {
+.warning-radios input[type="radio"] {
   opacity: 0;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.missile-radios label {
-  padding: 10vw;
+.warning-radios label {
+  width: 100%;
+  padding: 10vw 0;
   border-radius: 20px; 
   box-shadow: 8px 16px 20px 0 rgba(0,0,0,0.22);
-  margin: 0 10px;
   transition: background-color 0.2s ease;
 }
 
-.missile-radios .label:hover,
-.missile-radios .label:focus {
+.warning-radios .label:hover,
+.warning-radios .label:focus {
   cursor: pointer;
 }
 
-.missile-radios .label-test {
+.warning-radios .label-test {
   background-color: rgba(243, 154, 39, 0.15);
   border: 1px solid rgba(243, 154, 39, 0.25);
 }
 
-.missile-radios .label-test:hover,
-.missile-radios input[type="radio"]:focus + .label-test {
+.warning-radios .label-test:hover,
+.warning-radios input[type="radio"]:focus + .label-test {
   background-color: rgba(243, 154, 39, 0.35);
 }
 
-.missile-radios input[type="radio"]:checked + .label-test {
+.warning-radios input[type="radio"]:checked + .label-test {
   background-color: rgba(243, 154, 39, 0.85);
 }
 
-.missile-radios .label-live {
+.warning-radios .label-live {
   background-color: rgba(247, 45, 15, 0.15);
   border: 1px solid rgba(247, 45, 15, 0.25);
 }
 
-.missile-radios .label-live:hover,
-.missile-radios input[type="radio"]:focus + .label-live {
+.warning-radios .label-live:hover,
+.warning-radios input[type="radio"]:focus + .label-live {
   background-color: rgba(247, 45, 15, 0.35);
 }
 
-.missile-radios input[type="radio"]:checked + .label-live {
+.warning-radios input[type="radio"]:checked + .label-live {
   background-color: rgba(247, 45, 15, 0.85);
 }
 
-.missile-radios label:after {
+.warning-radios label:after {
   visibility: hidden;
   margin-top: 15px;
   content: "";
@@ -93,38 +108,55 @@
   transform: rotate(-45deg);
 }
 
-.missile-radios input[type="radio"]:checked + label::after {
+.warning-radios input[type="radio"]:checked + label::after {
   visibility: visible;
 }
 
-.missile-radios .submit-wrapper {
+.warning-radios .submit-wrapper {
   display: block;
   width: 100%;
   text-align: center;
   position: relative;
 }
 
-.missile-radios .warn {
+.warning-radios .warn {
   display: inline-block;
   text-align: center;
   padding: 5px 10px;
   margin-top: 30px;
 }
 
-.missile-radios .submit-warning {
+.warning-radios .submit-warning {
   border: 2px solid rgb(247, 45, 15);
 }
 
-.missile-radios .btn-lg {
+.warning-radios .btn-lg {
   min-width: 25vw;
   margin: 30px auto 0;
-  font-size: 3rem;
+  font-size: 2.6rem;
 }
 
-.missile-radios .glyphicon {
+.warning-radios .glyphicon {
   display: inline;
 }
 
-.missile-radios .warn .glyphicon {
+.warning-radios .warn .glyphicon {
   margin-right: 10px;
+}
+
+.well {
+  text-align: center;
+  background-image: none;
+}
+
+.well.test {
+  background-color: rgba(243, 154, 39, 0.35);
+}
+
+.well.live {
+  background-color: rgba(247, 45, 15, 0.35);
+}
+
+.running-text {
+  font-size: 2.2rem;
 }

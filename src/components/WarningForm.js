@@ -1,134 +1,149 @@
 import React from 'react';
 
-import { Button, Form, FormControl, ControlLabel, FormGroup, Glyphicon } from 'react-bootstrap';
+import { Button, Form, FormControl, ControlLabel, FormGroup, Glyphicon, Well } from 'react-bootstrap';
 
 import './WarningForm.css';
 
 class WarningForm extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: '',
-      error: false,
-      stage: 1
-    };
-
-    this.handleOptionChange = this.handleOptionChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.toggleStage = this.toggleStage.bind(this);
-    this.doWarning = this.doWarning.bind(this);
-  }
-
-  handleSubmit(event) {
-    switch (this.state.value) {
-      case 'live':
-        this.toggleStage();
-        break;
-      case 'test':
-        alert('Test alert. Carry on, nothing to see here.');
-        break;
-      default:
-        this.defaultError();
-    }
-    event.preventDefault();
-  }
-
-  handleOptionChange(event) {
-    this.setState({value: event.target.value});
-    this.setState({error: false});
-  }
-
-  defaultError() {
-    this.setState({error: true});
-  }
-
-  toggleStage() {
-    this.setState({stage: this.state.stage === 1 ? 2 : 1});
-  }
-  
-  doWarning() {
-    alert('Live missile warning sent!');
-    window.location.reload();
-  }
- 
   render() {
+
+    const {
+      data,
+      handleOptionChange,
+      handleSubmit,
+      toggleState,
+      doLive,
+      indexReset
+    } = this.props;
+
+    const num = this.props.index;
+
+    const optionChange = (event) => {
+      handleOptionChange(event, num)
+    }
+
+    const submit = (event) => {
+      handleSubmit(event, num)
+    }
+
+    const toggle = () => {
+      toggleState(num);
+    }
+
+    const goLive = () => {
+      doLive(num)
+    }
+
+    const checkActive = () => {
+      if (data.active.test) {
+        return "Test"
+      } else if (data.active.live) {
+        return "Live"
+      } else {
+        return
+      }
+    }
+
+    const reset = () => {
+      indexReset(num);
+    }
+
     return (
-      <div className="missile-workflow">
-        <Form onSubmit={this.handleSubmit} className="missile-radios">
-          <FormGroup>
-            <FormControl 
-              type="radio"
-              id="test" 
-              name="missileOptions"
-              onChange={this.handleOptionChange}
-              value="test" />
-            <ControlLabel 
-              htmlFor="test" 
-              className="label-test">
-              <span className="big">Test</span>
-              <span>Missile Warning</span>
-            </ControlLabel>
-          </FormGroup>
-          <FormGroup>
-            <FormControl 
-              type="radio" 
-              id="live" 
-              name="missileOptions"
-              onChange={this.handleOptionChange}
-              value="live" />
-            <ControlLabel 
-              htmlFor="live" 
-              className="label-live">
-              <span className="big">Live</span>
-              <span>Missile Warning</span>
-            </ControlLabel>
-          </FormGroup>
-          {
-            this.state.value === 'live' &&
-            <p className="submit-warning warn" role="alert">
-            <Glyphicon glyph="bullhorn" aria-hidden="true" />Attention! You have selected a <b>LIVE</b> missile warning. Please make sure you're sure!
-            </p>
-          }
-          {
-            this.state.value === '' && this.state.error === true &&
-            <p className="default-error warn" role="alert">
-              <Glyphicon glyph="warning-sign" aria-hidden="true" />Hi! I think you forgot something. Please pick whether to start a test or live missile warning session.
-            </p>
-          }
-          <div className="submit-wrapper">
-          {
-            this.state.stage === 1 &&
+      <div className="warning-workflow">
+        <h2>{data.type}</h2>
+        {
+          (data.active.live || data.active.test) &&
+          <Well bsSize="large" className={checkActive().toLowerCase()}>
+            <p className="running-text">You are currently running a {data.type} <b>{checkActive()}</b> sequence.</p>
             <Button
-            type="submit"
-            bsStyle="success"
-            bsSize="large"
-            >
-              Go <Glyphicon glyph="send" aria-hidden="true" />
-            </Button>
-          }
-          {
-            this.state.stage === 2 &&
-            <div className="follow-up">   
-              <p>Are you one-hundo-p, absolutely, positively, super-dee-duperty sure?</p>      
-              <Button
               type="button"
-              onClick={this.toggleStage}
-              >
-              No, take me back!
-              </Button>  
+              bsStyle="primary"
+              bsSize="large"
+              onClick={reset}>
+              Click here to cancel the {checkActive()} sequence.
+            </Button>
+          </Well>
+        }
+        {
+          !data.active.live && !data.active.test &&
+          <Form onSubmit={(event) => submit(event)} className="warning-radios">
+            <FormGroup>
+              <FormControl 
+                type="radio"
+                id={`test-${num}`} 
+                name={`options-${num}`}
+                onChange={(event) => optionChange(event)}
+                value="test"
+                checked={data.value === "test"} />
+              <ControlLabel 
+                htmlFor={`test-${num}`}  
+                className="label-test">
+                <span className="big">Test</span>
+                <span>{data.type} Alert</span>
+              </ControlLabel>
+            </FormGroup>
+            <FormGroup>
+              <FormControl 
+                type="radio" 
+                id={`live-${num}`}  
+                name={`options-${num}`}
+                onChange={(event) => optionChange(event)}
+                value="live"
+                checked={data.value === "live"} />
+              <ControlLabel 
+                htmlFor={`live-${num}`}  
+                className="label-live">
+                <span className="big">Live</span>
+                <span>{data.type} Alert</span>
+              </ControlLabel>
+            </FormGroup>
+            {
+              data.value === 'live' &&
+              <p className="submit-warning warn" role="alert">
+              <Glyphicon glyph="bullhorn" aria-hidden="true" />Attention! You have selected a <b>LIVE</b> {data.type} Alert. Please make sure you're sure!
+              </p>
+            }
+            {
+              data.value === '' && data.error === true &&
+              <p className="default-error warn" role="alert">
+                <Glyphicon glyph="warning-sign" aria-hidden="true" />Hi! I think you forgot something. Please pick whether to start a test or live session.
+              </p>
+            }
+            <div className="submit-wrapper">
+            {
+              data.stage === 1 &&
               <Button
               type="submit"
               bsStyle="success"
-              onClick={this.doWarning}
+              bsSize="large"
               >
-                <Glyphicon glyph="weather-warning" aria-hidden="true" /> Yes, it's an emergency!
+                Go <Glyphicon glyph="send" aria-hidden="true" />
               </Button>
-            </div> 
-          }
+            }
+            {
+              data.stage === 2 &&
+              <div className="follow-up">   
+                <p>Are you one-hundo-p, absolutely, positively, super-dee-duperty sure?</p>      
+                <Button
+                type="button"
+                bsStyle="link"
+                onClick={toggle}
+                >
+                No, take me back!
+                </Button>  
+                <Button
+                type="button"
+                bsStyle="danger"
+                onClick={goLive}
+                >
+                  <Glyphicon glyph="weather-warning" aria-hidden="true" /> Yes, it's an emergency!
+                </Button>
+              </div> 
+            }
 
-          </div>
-        </Form>
+            </div>
+          </Form>
+        }
       </div>
     );
   }
